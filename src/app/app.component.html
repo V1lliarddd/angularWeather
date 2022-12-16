@@ -1,0 +1,34 @@
+<div class="input">
+  <h2 *ngIf="!city">Weather Check</h2>
+  <input type="text" class="weather-input" [(ngModel)]="cityValue" />
+  <button (click)="check()" class="weather-check-btn">Check</button>
+</div>
+<div class="err" *ngIf="errors">Oops... We can't find this city :-(</div>
+
+<div class="container" *ngIf="city">
+  <div
+    class="upper-data"
+    [ngClass]="{
+      cold: cold,
+      warm: warm
+    }"
+  >
+    <div class="weather-data">
+      <div class="location">{{ city.cityName }}</div>
+      <div class="temperature">{{ city.cityNowTemp }}</div>
+    </div>
+  </div>
+  <div class="lower-data">
+    <div class="more-info-label" style="color:white">More Information</div>
+    <div class="more-info-container">
+      <div class="info-item">
+        <span>Min Temperature: {{ city.cityMinTemp }}</span>
+      </div>
+      <div class="info-item">
+        <span></span>Max Temperature: {{ city.cityMaxTemp }}
+      </div>
+      <div class="info-item"><span></span>Weather: {{ city.cityWeather }}</div>
+      <div class="info-item"><span></span>Wind: {{ city.cityWind }}</div>
+    </div>
+  </div>
+</div>
